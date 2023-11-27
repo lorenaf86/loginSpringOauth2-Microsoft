@@ -1,0 +1,22 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          azure:
+            client-id: ${spring.security.oauth2.client.registration.azure.client-id}
+            client-secret: ${spring.security.oauth2.client.registration.azure.client-secret}
+            provider: azure
+            authorization-grant-type: ${spring.security.oauth2.client.registration.azure.authorization-grant-type}
+            redirect-uri: http://localhost:8080/login/oauth2/code/
+            scope: https://graph.microsoft.com/User.Read
+        provider:
+          azure:
+            authorization-uri: ${spring.security.oauth2.client.provider.azure.authorization-uri}
+            token-uri: ${spring.security.oauth2.client.provider.azure.token-uri}
+            user-info-uri: ${spring.security.oauth2.client.provider.azure.user-info-uri}
+            user-name-attribute: ${spring.security.oauth2.client.provider.my-oauth-provider.user-name-attribute}
+            jwk-set-uri: ${spring.security.oauth2.client.provider.azure.jwk-set-uri}            
+server:
+  port: 8080
+  forward-headers-strategy: native
